@@ -1,0 +1,11 @@
+<p>list-page works!</p>
+<mat-divider></mat-divider>
+
+<!-- .grid.mb-8 esto es para crear una clase mas rapido -->
+<div class="grid mb-8">
+<div *ngFor="let hero of heroes" class="col-12 sm:col-4 md:col-3 xl:col-2">
+    <heroes-card [hero]="hero"/>
+</div>
+</div>
+
+

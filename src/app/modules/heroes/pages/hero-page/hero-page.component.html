@@ -1,0 +1,84 @@
+<p >hero-page works!</p>
+
+<!-- Realizacion  propia del codigo -->
+<h2>
+<table>
+    <tr>
+        <td><font COLOR="primary">Datos</font></td>
+        <td><font COLOR="primary">Informacion del Personaje</font></td>
+    </tr>
+    <tr>
+        <td><b>Identificación:</b></td>
+        <td><span>{{general[0] }}</span></td>
+    </tr>
+    <tr>
+        <td><b>Superhéroe:</b></td>
+        <td><span> {{ general[1] }}</span><br></td>
+    </tr>
+    <tr>
+        <td><b>Editor:</b></td>
+        <td><span> {{ general[2] }}</span><br></td>
+    </tr>
+    <tr>
+        <td><b>Personaje:</b></td>
+        <td><span> {{ general[3] }}</span><br></td>
+    </tr>
+    <tr>
+        <td><b>Primera Impresión: &nbsp;&nbsp;</b></td>
+        <td><span> {{ general[4] }}</span><br></td>
+    </tr>
+</table>
+</h2>
+
+<div> <br></div>
+<button 
+    mat-button 
+    mat-raised 
+    [routerLink]="['/heroes']">
+        <mat-icon>home</mat-icon>
+        MENU
+</button>
+
+<!-- Lo nuevo que se agrego en clase -->
+
+    <!-- Con este codigo se agrega la imagen de cargando "spiner" -->
+<ng-template #divLoading>
+    <mat-grid-list cols="1">
+        <mat-grid-tile>
+            <mat-spinner></mat-spinner>
+        </mat-grid-tile>
+    </mat-grid-list>
+</ng-template>
+
+    <!-- Con este codigo se agrega todo el contenido -->
+<div *ngIf="hero; else divLoading" class="grid p-2">
+    <mat-card class="col-12 sm:col-6">
+        <mat-card-header>
+            <mat-card-title>{{hero.alter_ego}}</mat-card-title>
+            <mat-card-subtitle>{{hero.superhero}}</mat-card-subtitle>
+        </mat-card-header>
+        <img [src]="hero | heroImage" [alt]="hero.superhero" mat-card-image/>
+    </mat-card>
+    <mat-card class="col-12 sm:col-6">
+        <mat-card-header>
+            <mat-card-title>Informacion</mat-card-title>
+            <mat-card-subtitle>{{hero.superhero}}</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <mat-list>
+                <mat-nav-list>{{hero.first_appearance}}</mat-nav-list>
+                <mat-nav-list>{{hero.characters}}</mat-nav-list>
+                <mat-nav-list>{{hero.publisher}}</mat-nav-list>
+                <mat-nav-list>{{hero.alter_ego}}</mat-nav-list>
+            </mat-list>
+
+            <button mat-button-color="warn" (click)="goBack()">
+                Regresar
+            </button>
+        </mat-card-content>
+
+    </mat-card>
+</div>
+
+
